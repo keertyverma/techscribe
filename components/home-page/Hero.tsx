@@ -16,8 +16,7 @@ const Hero = () => {
       <h1>Hey, I'm Keerty</h1>
       <p>
         Discover the world of web development with our tech blog. Stay updated
-        on industry trends and unleash your potential in creating exceptional
-        digital experiences.
+        on industry trends and unleash your potential.
       </p>
     </section>
   );

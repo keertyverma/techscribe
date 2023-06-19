@@ -4,14 +4,14 @@ import matter from "gray-matter";
 
 const postDirectory = path.join(process.cwd(), "content/posts");
 
-function getPostData(fileName: string) {
-  const filePath = path.join(postDirectory, fileName);
+export function getPostData(postIdentifier: string) {
+  const postSlug = postIdentifier.replace(/\.md$/, ""); // removes the file extentions
+  const filePath = path.join(postDirectory, `${postSlug}.md`);
+
   const fileContent = fs.readFileSync(filePath);
   const { data, content } = matter(fileContent);
-
   const { title, image, excerpt, date, isFeatured } = data;
 
-  const postSlug = fileName.replace(/\.md$/, ""); // removes the file extentions
   const postData = {
     slug: postSlug,
     title,
@@ -25,8 +25,12 @@ function getPostData(fileName: string) {
   return postData;
 }
 
+export function getPostFiles() {
+  return fs.readdirSync(postDirectory);
+}
+
 export function getAllPosts() {
-  const postFiles = fs.readdirSync(postDirectory);
+  const postFiles = getPostFiles();
 
   const allPosts = postFiles.map((postFile) => getPostData(postFile));
   const sortedPosts = allPosts.sort((postA, postB) =>

@@ -1,14 +1,14 @@
 import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
+import classes from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <header>
+    <header className={classes.header}>
       <Link href="/">
         <Logo />
       </Link>
-
       <nav>
         <ul>
           <li>

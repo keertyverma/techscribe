@@ -1,7 +1,12 @@
-import React from "react";
+import Hero from "@/components/home-page/Hero";
+import React, { Fragment } from "react";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <Fragment>
+      <Hero />
+    </Fragment>
+  );
 };
 
 export default HomePage;

@@ -3,10 +3,17 @@ import ReactMarkdown from "react-markdown";
 
 import { PostType } from "@/types";
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
+import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
+
 import classes from "./PostContent.module.css";
 import PostHeader from "./PostHeader";
+
+SyntaxHighlighter.registerLanguage("js", js);
+SyntaxHighlighter.registerLanguage("css", css);
 
 interface Props {
   post: PostType;

@@ -1,15 +1,24 @@
 import PostContent from "@/components/posts/post-detail/PostContent";
-import React from "react";
+import React, { Fragment } from "react";
 import { GetStaticProps } from "next";
 import { getPostData, getPostFiles } from "@/helper/posts-util";
 import { PostType } from "@/types";
+import Head from "next/head";
 
 interface Props {
   post: PostType;
 }
 
 const PostDetailPage = ({ post }: Props) => {
-  return <PostContent post={post} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt} />
+      </Head>
+      <PostContent post={post} />
+    </Fragment>
+  );
 };
 
 export function getStaticPaths() {
